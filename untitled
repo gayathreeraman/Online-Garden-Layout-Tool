@@ -1,0 +1,15 @@
+$(function() {
+    $('#divLayout').on('mousedown', 'div', function() {
+        $(this).addClass('elementToMove').parents().on('mousemove', function(e) {
+            $('.elementToMove').offset({
+                top: e.pageY - $('.elementToMove').outerHeight() / 2,
+                left: e.pageX - $('.elementToMove').outerWidth() / 2
+            }).on('mouseup', function() {
+                $(this).removeClass('elementToMove');
+            });
+        });
+        e.preventDefault();
+    }).on('mouseup', function() {
+        $('.elementToMove').removeClass('elementToMove');
+    });
+});
